@@ -71,8 +71,8 @@ export class ColorPicker {
       /* out of box range */
       if (x < 0) { x = 0; }
       if (y < 0) { y = 0; }
-      if (x > width) { x = width - 1; }
-      if (y > height) { y = height - 1; }
+      if (x > width) { x = width; }
+      if (y > height) { y = height; }
 
       return {x, y};
   }
@@ -97,6 +97,7 @@ export class ColorPicker {
           x: e.clientX - this.gradientBox.getBoundingClientRect().left,
           y: e.clientY - this.gradientBox.getBoundingClientRect().top,
         };
+        console.log(this.pickerPosition.x, this.pickerPosition.y);
       };
       document.onmouseup = () => {
         document.onmouseup = null;
