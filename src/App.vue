@@ -38,17 +38,16 @@ export default class App extends Vue {
   // };
 
     mounted(): void {
-        // this.picker = document.getElementById("sv-picker");  //circle
-        // this.pickerRadius = this.picker.getBoundingClientRect().width / 2; //circle radius
-        // this.gradientBox = this.picker.parentElement.getBoundingClientRect(); // gradientBox
-        // this.colorTest = document.getElementById("test");
+      // this.picker = document.getElementById("sv-picker");  //circle
+      // this.pickerRadius = this.picker.getBoundingClientRect().width / 2; //circle radius
+      // this.gradientBox = this.picker.parentElement.getBoundingClientRect(); // gradientBox
+      // this.colorTest = document.getElementById("test");
 
-        //this.HUEBox = document.getElementById("hue-box");
+      //this.HUEBox = document.getElementById("hue-box");
 
       this.hsvPicker.joinTo = 'wrapper';
-      this.hsvPicker.setPickerPosition = {x: 500, y: 0};
+      this.hsvPicker.pickerPosition = {x: 500, y: 0};
     }
-
     /**
      * Function get x y coords and set color-picker in equal position inside the box element
      * @param e mouse event. Using coordinates: x y

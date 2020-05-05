@@ -10,7 +10,7 @@ export class ColorPicker {
     this.gradientBox.appendChild(this.picker);
     this.setId(picker);
     this.setClass(picker);
-    this.setClickEvent(this.gradientBox,);
+    this.addClickEvent();
   }
 
   /**
@@ -48,9 +48,12 @@ export class ColorPicker {
    * @param position x and y axis.
    * @return x and y available values.
    */
-  set setPickerPosition(position: {x: number, y: number}) {
+  set pickerPosition(position: {x: number, y: number}) {
     this.pickerPos = this.boxCoords(position.x, position.y, this.gradientBox.getBoundingClientRect());
     this.setPickerOffset(this.pickerPos);
+  }
+  get pickerPosition() {
+    return this.pickerPos;
   }
 
   /**
@@ -83,7 +86,22 @@ export class ColorPicker {
       this.picker.style.top = (coords.y - this.pickerRadius) + 'px';
   }
 
-  private setClickEvent(element: HTMLElement, event: EventListenerObject) {
-    element.addEventListener('click', event);
+  private addClickEvent() {
+    this.gradientBox.onmousedown = (e) => {
+      this.pickerPosition = {
+        x: e.clientX - this.gradientBox.getBoundingClientRect().left,
+        y: e.clientY - this.gradientBox.getBoundingClientRect().top,
+      };
+      document.onmousemove = (e) => {
+        this.pickerPosition = {
+          x: e.clientX - this.gradientBox.getBoundingClientRect().left,
+          y: e.clientY - this.gradientBox.getBoundingClientRect().top,
+        };
+      };
+      document.onmouseup = () => {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      };
+    };
   }
 }
