@@ -84,6 +84,9 @@ export class Picker {
       this.picker.style.top = (coords.y - this.pickerRadius) + 'px';
   }
 
+  /**
+   * Add Mouse events on: click drag mouseup
+   */
   public addClickEvent() {
     this.gradientBox.onmousedown = (e: MouseEvent) => {
       this.pickerPosition(
