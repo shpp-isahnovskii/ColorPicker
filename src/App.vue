@@ -1,16 +1,16 @@
 <template lang="pug">
   #app
     .picker-wrapper(id="wrapper")
-      .hue-picker(id="hue-box")
-        .picker-arrow-circle(id="hue-picker") //@mousedown="pickHue")
-      #test2
+      //.hue-picker(id="hue-box")
+      //  .picker-arrow-circle(id="hue-picker") //@mousedown="pickHue")
+      //#test2
 
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { ColorPicker } from "@/ColorPicker";
-import { PickerInterface } from "@/interface/PickerInterface";
+import { PickerInterface } from '@/interface/PickerInterface';
+import { ColorPicker } from '@/ColorPicker';
 
 @Component
 export default class App extends Vue {
@@ -47,6 +47,7 @@ export default class App extends Vue {
 
       this.hsvPicker.joinTo = 'wrapper';
       this.hsvPicker.pickerPosition = {x: 500, y: 0};
+      this.hsvPicker.setBackgroundColor('255,0,0')
     }
     /**
      * Function get x y coords and set color-picker in equal position inside the box element
@@ -207,9 +208,9 @@ export default class App extends Vue {
   width: 500px;
   height: 256px;
 
-  background:
-      linear-gradient(to bottom,transparent, black),
-      linear-gradient(to right , white, red);
+  //background:
+      //linear-gradient(to bottom,transparent, black),
+      //linear-gradient(to right , white, red);
 }
 
 .picker_arrow {
