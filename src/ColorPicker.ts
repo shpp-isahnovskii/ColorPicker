@@ -10,10 +10,10 @@ export class ColorPicker extends Picker {
   }
 
   /**
-   * Function this element will be chosen to change it's color in future
+   * This element will be chosen to change it's color in future
    * @param elemId id of the chosen element
    */
-  set joinColor(elemId: string) {
+  set joinColorTo(elemId: string) {
     let elem = document.getElementById(elemId);
     if(elem === null) {
       return;

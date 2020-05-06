@@ -25,8 +25,8 @@ export default class App extends Vue {
 
     mounted(): void {
       this.hsvPicker.joinTo = 'wrapper';
+      this.hsvPicker.joinColorTo = 'test';
       this.hsvPicker.pickerPosition(500, 0);
-      this.hsvPicker.joinColor = 'test';
     }
 }
 </script>
@@ -68,7 +68,6 @@ export default class App extends Vue {
   margin-left: 20px;
   width: 60px;
   height: 256px;
-  background-color: red;
 }
 .hue-picker {
   width: 200px;
