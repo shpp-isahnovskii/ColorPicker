@@ -2,9 +2,13 @@ import { Picker } from '@/Picker';
 import { PickerInterface } from '@/interface/PickerInterface';
 
 export class ColorPicker extends Picker {
-  constructor(picker: PickerInterface) {
-    super(picker);
 
+  constructor(picker: PickerInterface, name: string) {
+    super(picker);
+  }
+
+  public pickerPosition(x: number, y: number) {
+    super.pickerPosition(x, y);
   }
 
   public setBackgroundColor(rgb: string) {
@@ -13,12 +17,7 @@ export class ColorPicker extends Picker {
         `linear-gradient(to right , white, rgb(${rgb}))`;
   }
 
-  private svNormalisation(): void {
-    const s = this.pickerPosition.x / this.gradientBox.getBoundingClientRect().width * 100;
-    const v = this.pickerPosition.y / this.gradientBox.getBoundingClientRect().height * 100;
-  }
-
-  private HSVtoRGB(S: number , V: number, H: number) {
+  private hsvToRgb(S: number , V: number, H: number) {
 
       const Hi = Math.floor(H / 60) % 6;
       const Vmin = (100 - S) * V / 100;
@@ -45,6 +44,6 @@ export class ColorPicker extends Picker {
 
       return RGB.map( (e: number) => {
         return Math.floor(e * 255 / 100);
-      });
+      }).toString();
   }
 }

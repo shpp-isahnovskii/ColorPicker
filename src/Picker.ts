@@ -46,15 +46,12 @@ export class Picker {
 
   /**
    * set picker to the starting position inside the parent rect.
-   * @param position x and y axis.
-   * @return x and y available values.
+   * @param x axis
+   * @param y axis
    */
-  set pickerPosition(position: {x: number, y: number}) {
-    this.pickerPos = this.boxCoords(position.x, position.y, this.gradientBox.getBoundingClientRect());
+  public pickerPosition(x: number, y: number) {
+    this.pickerPos = this.boxCoords(x, y, this.gradientBox.getBoundingClientRect());
     this.setPickerOffset(this.pickerPos);
-  }
-  get pickerPosition() {
-    return this.pickerPos;
   }
 
   /**
@@ -87,17 +84,17 @@ export class Picker {
       this.picker.style.top = (coords.y - this.pickerRadius) + 'px';
   }
 
-  private addClickEvent() {
+  public addClickEvent() {
     this.gradientBox.onmousedown = (e: MouseEvent) => {
-      this.pickerPosition = {
-        x: e.clientX - this.gradientBox.getBoundingClientRect().left,
-        y: e.clientY - this.gradientBox.getBoundingClientRect().top,
-      };
+      this.pickerPosition(
+        e.clientX - this.gradientBox.getBoundingClientRect().left,
+        e.clientY - this.gradientBox.getBoundingClientRect().top,
+      );
       document.onmousemove = (e: MouseEvent) => {
-        this.pickerPosition = {
-          x: e.clientX - this.gradientBox.getBoundingClientRect().left,
-          y: e.clientY - this.gradientBox.getBoundingClientRect().top,
-        };
+        this.pickerPosition(
+          e.clientX - this.gradientBox.getBoundingClientRect().left,
+          e.clientY - this.gradientBox.getBoundingClientRect().top,
+        );
       };
       document.onmouseup = () => {
         document.onmouseup = null;

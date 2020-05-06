@@ -4,6 +4,7 @@
       //.hue-picker(id="hue-box")
       //  .picker-arrow-circle(id="hue-picker") //@mousedown="pickHue")
       //#test2
+    #test
 
 </template>
 
@@ -20,7 +21,7 @@ export default class App extends Vue {
       pikerId: 'sv-picker',
       pickerClass: 'picker_arrow'
     };
-    hsvPicker = new ColorPicker(this.pickerParams);
+    hsvPicker = new ColorPicker(this.pickerParams, 'test');
 
   //   pickerRadius: number = 0;
   //   HSV_H: number = 0;
@@ -46,8 +47,7 @@ export default class App extends Vue {
       //this.HUEBox = document.getElementById("hue-box");
 
       this.hsvPicker.joinTo = 'wrapper';
-      this.hsvPicker.pickerPosition = {x: 500, y: 0};
-      this.hsvPicker.setBackgroundColor('255,0,0')
+      this.hsvPicker.pickerPosition(500, 0);
     }
     /**
      * Function get x y coords and set color-picker in equal position inside the box element
@@ -230,7 +230,6 @@ export default class App extends Vue {
   margin-left: 20px;
   width: 60px;
   height: 256px;
-  background-color: red;
 }
 .hue-picker {
   width: 200px;
