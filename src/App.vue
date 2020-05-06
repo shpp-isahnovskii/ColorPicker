@@ -21,7 +21,7 @@ export default class App extends Vue {
       pikerId: 'sv-picker',
       pickerClass: 'picker_arrow'
     };
-    hsvPicker = new ColorPicker(this.pickerParams, 'test');
+    hsvPicker = new ColorPicker(this.pickerParams);
 
   //   pickerRadius: number = 0;
   //   HSV_H: number = 0;
@@ -48,6 +48,7 @@ export default class App extends Vue {
 
       this.hsvPicker.joinTo = 'wrapper';
       this.hsvPicker.pickerPosition(500, 0);
+      this.hsvPicker.joinColor = 'test';
     }
     /**
      * Function get x y coords and set color-picker in equal position inside the box element

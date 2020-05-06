@@ -2,16 +2,28 @@ import { Picker } from '@/Picker';
 import { PickerInterface } from '@/interface/PickerInterface';
 
 export class ColorPicker extends Picker {
-
-  constructor(picker: PickerInterface, name: string) {
+  private showedElem: HTMLElement | null;
+  constructor(picker: PickerInterface) {
     super(picker);
+    this.BoxBackgroundColorRGB('255, 0, 0');
+    this.showedElem = null;
+  }
+  set joinColor(elemId: string) {
+    let elem = document.getElementById(elemId);
+    if(elem === null) {
+      return;
+    }
+    this.showedElem = elem;
   }
 
   public pickerPosition(x: number, y: number) {
     super.pickerPosition(x, y);
+    if(this.showedElem !== null) {
+      this.showedElem.style.backgroundColor = `rgb(${this.hsvToRgb(x, y,0)})`;
+    }
   }
 
-  public setBackgroundColor(rgb: string) {
+  public BoxBackgroundColorRGB(rgb: string): void {
     this.gradientBox.style.background =
         'linear-gradient(to bottom,transparent, black),' +
         `linear-gradient(to right , white, rgb(${rgb}))`;
